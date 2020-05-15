@@ -34,4 +34,6 @@ dependencies {
     api(DependenciesExt.mqtt)
     api(DependenciesExt.retrofit)
     api(DependenciesExt.coroutines)
+    api(DependenciesExt.localBroadcastManager)
+
 }
