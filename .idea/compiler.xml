@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="IM.app" target="1.8" />
+      <module name="IM.buildSrc" target="1.8" />
+      <module name="IM.imcore" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
