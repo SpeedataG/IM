@@ -1,4 +1,4 @@
- /**
+/**
  * @author :Reginer in  2020/2/27 16:06.
  *         联系方式:QQ:282921012
  *         功能描述:Mdm环境变量
@@ -32,7 +32,7 @@ object Version {
 object DependenciesExt {
     const val buildGradle = "com.android.tools.build:gradle:4.1.0-alpha09"
     const val kotlinGradlePlugin =
-            "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlinVersion}"
+        "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlinVersion}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.kotlinVersion}"
     const val appcompat = "androidx.appcompat:appcompat:1.1.0"
     const val ktx = "androidx.core:core-ktx:1.2.0"
@@ -44,12 +44,12 @@ object DependenciesExt {
     //https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Version.lifecycleVersion}"
     const val viewmodelKtx =
-            "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycleVersion}"
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycleVersion}"
 
     //https://github.com/square/retrofit
     private const val retrofitCore = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
     private const val converterGson =
-            "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
+        "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
     val retrofit = arrayOf(retrofitCore, converterGson)
 
     //https://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
@@ -64,10 +64,10 @@ object DependenciesExt {
     const val objectboxProcessor = "io.objectbox:objectbox-processor:${Version.objectboxVersion}"
     private const val objectboxKotlin = "io.objectbox:objectbox-kotlin:${Version.objectboxVersion}"
     private const val objectboxAndroid =
-            "io.objectbox:objectbox-android:${Version.objectboxVersion}"
+        "io.objectbox:objectbox-android:${Version.objectboxVersion}"
     val objectbox = arrayOf(objectboxKotlin, objectboxAndroid)
     const val objectboxGradlePlugin =
-            "io.objectbox:objectbox-gradle-plugin:${Version.objectboxVersion}"
+        "io.objectbox:objectbox-gradle-plugin:${Version.objectboxVersion}"
 
     //https://github.com/orhanobut/logger
     const val logger = "com.orhanobut:logger:2.2.0"
@@ -109,23 +109,23 @@ object DependenciesExt {
 
     //https://developer.android.google.cn/jetpack/androidx/releases/work#declaring_dependencies
     val workManager = arrayOf(
-            "androidx.work:work-runtime:${Version.workVersion}",
-            "androidx.work:work-runtime-ktx:${Version.workVersion}"
+        "androidx.work:work-runtime:${Version.workVersion}",
+        "androidx.work:work-runtime-ktx:${Version.workVersion}"
     )
 
     //https://github.com/scwang90/SmartRefreshLayout
     val refreshLayout = arrayOf(
-            "com.scwang.smart:refresh-layout-kernel:${Version.refreshVersion}",
-            "com.scwang.smart:refresh-header-classics:${Version.refreshVersion}",
-            "com.scwang.smart:refresh-layout-kernel:${Version.refreshVersion}",
-            "com.scwang.smart:refresh-footer-classics:${Version.refreshVersion}",
-            "com.scwang.smart:refresh-footer-ball:${Version.refreshVersion}"
+        "com.scwang.smart:refresh-layout-kernel:${Version.refreshVersion}",
+        "com.scwang.smart:refresh-header-classics:${Version.refreshVersion}",
+        "com.scwang.smart:refresh-layout-kernel:${Version.refreshVersion}",
+        "com.scwang.smart:refresh-footer-classics:${Version.refreshVersion}",
+        "com.scwang.smart:refresh-footer-ball:${Version.refreshVersion}"
     )
 
     //https://codelabs.developers.google.com/codelabs/camerax-getting-started/#0
     val location = arrayOf(
-            //https://jcenter.bintray.com/com/amap/api/location/
-            "com.amap.api:location:4.8.0"
+        //https://jcenter.bintray.com/com/amap/api/location/
+        "com.amap.api:location:4.8.0"
     )
 
     //https://github.com/Justson/AgentWeb
@@ -155,10 +155,17 @@ object DependenciesExt {
 
     //https://github.com/gzu-liyujiang/AndroidPicker 文件浏览
     const val filePicker = "com.github.gzu-liyujiang.AndroidPicker:FilePicker:1.5.6"
+
     //https://github.com/yanzhenjie/AndServer
     private const val andServerApi = "com.yanzhenjie.andserver:api:${Version.andServerVersion}"
-    private const val andServerAnnotation = "com.yanzhenjie.andserver:annotation:${Version.andServerVersion}"
+    private const val andServerAnnotation =
+        "com.yanzhenjie.andserver:annotation:${Version.andServerVersion}"
     const val andServerProcessor = "com.yanzhenjie.andserver:processor:${Version.andServerVersion}"
     val andServer = arrayOf(andServerApi, andServerAnnotation)
     const val pickerView = "com.contrarywind:Android-PickerView:4.1.6"
+    // https://github.com/liujingxing/okhttp-RxHttp
+    private const val rxHttpCore = "com.ljx.rxhttp:rxhttp:2.2.1"
+    private const val rxHttpLife = "com.ljx.rxlife:rxlife-coroutine:2.0.0"
+    const val rxHttpCompiler = "com.ljx.rxhttp:rxhttp-compiler:2.2.1"
+    val rxHttp = arrayOf(rxHttpCore, rxHttpLife)
 }

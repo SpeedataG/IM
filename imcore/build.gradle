@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -15,7 +15,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -32,8 +35,8 @@ dependencies {
     api(DependenciesExt.ktx)
     api(DependenciesExt.appcompat)
     api(DependenciesExt.mqtt)
-    api(DependenciesExt.retrofit)
-    api(DependenciesExt.coroutines)
     api(DependenciesExt.localBroadcastManager)
+    api(DependenciesExt.rxHttp)
+    kapt(DependenciesExt.rxHttpCompiler)
 
 }

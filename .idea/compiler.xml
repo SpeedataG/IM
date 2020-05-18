@@ -4,7 +4,7 @@
     <bytecodeTargetLevel>
       <module name="IM.app" target="1.8" />
       <module name="IM.buildSrc" target="1.8" />
-      <module name="IM.imcore" target="1.7" />
+      <module name="IM.imcore" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

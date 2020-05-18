@@ -21,7 +21,7 @@ import java.util.List;
  * 功能描述:
  */
 public class ImChatManager implements MqttCallbackExtended {
-    private final List<ImMessageListener> messageListeners = Collections.synchronizedList(new ArrayList<ImMessageListener>());
+    private final List<ImMessageListener> messageListeners = Collections.synchronizedList(new ArrayList<>());
     private String idSelf;
 
     public void addMessageListener(ImMessageListener listener) {
@@ -50,8 +50,8 @@ public class ImChatManager implements MqttCallbackExtended {
         MqttManager.getInstance().release();
     }
 
-    public void sendText() {
-
+    public void sendText(ImEntity imEntity) {
+        ChatManagerKt.sendText(imEntity);
     }
 
     @Override
