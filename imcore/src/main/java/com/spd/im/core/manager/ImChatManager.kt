@@ -1,81 +1,74 @@
-package com.spd.im.core.manager;
+package com.spd.im.core.manager
 
-import android.content.Context;
-
-import com.google.gson.Gson;
-import com.spd.im.core.entity.ImEntity;
-import com.spd.im.core.listener.ILoginCallback;
-import com.spd.im.core.listener.ImMessageListener;
-
-import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
-import org.eclipse.paho.client.mqttv3.MqttCallbackExtended;
-import org.eclipse.paho.client.mqttv3.MqttMessage;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.content.Context
+import com.google.gson.Gson
+import com.spd.im.core.entity.ImEntity
+import com.spd.im.core.listener.ILoginCallback
+import com.spd.im.core.listener.ImMessageListener
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
+import org.eclipse.paho.client.mqttv3.MqttCallbackExtended
+import org.eclipse.paho.client.mqttv3.MqttMessage
+import java.util.*
 
 /**
  * @author :Reginer on  2020/5/15 14:49.
  * 联系方式:QQ:282921012
  * 功能描述:
  */
-public class ImChatManager implements MqttCallbackExtended {
-    private final List<ImMessageListener> messageListeners = Collections.synchronizedList(new ArrayList<>());
-    private String idSelf;
-
-    public void addMessageListener(ImMessageListener listener) {
+class ImChatManager : MqttCallbackExtended {
+    private val messageListeners =
+        Collections.synchronizedList(ArrayList<ImMessageListener>())
+    private var idSelf: String? = null
+    fun addMessageListener(listener: ImMessageListener?) {
         if (listener == null) {
-            return;
+            return
         }
         if (!messageListeners.contains(listener)) {
-            messageListeners.add(listener);
+            messageListeners.add(listener)
         }
     }
 
-    public void removeMessageListener(ImMessageListener listener) {
+    fun removeMessageListener(listener: ImMessageListener?) {
         if (listener == null) {
-            return;
+            return
         }
-        messageListeners.remove(listener);
+        messageListeners.remove(listener)
     }
 
-    public void connect(Context context, String username, ILoginCallback iLoginCallback) {
-        idSelf = username;
-        MqttManager.getInstance().connect(context, username, this, iLoginCallback);
+    fun connect(
+        context: Context?,
+        username: String?,
+        iLoginCallback: ILoginCallback?
+    ) {
+        idSelf = username
+        MqttManager.getInstance().connect(context, username, this, iLoginCallback)
     }
 
-    public void logOut() {
-        MqttManager.getInstance().disconnect();
-        MqttManager.getInstance().release();
+    fun logOut() {
+        MqttManager.getInstance().disconnect()
+        MqttManager.getInstance().release()
     }
 
-    public void sendText(ImEntity imEntity) {
-        ChatManagerKt.sendText(imEntity);
+    suspend fun sendText(imEntity: ImEntity): ImEntity {
+        return imEntity.sendText()
     }
 
-    @Override
-    public void connectComplete(boolean reconnect, String serverURI) {
-        final String topicSelf = "msg/chat/" + idSelf;
-        MqttManager.getInstance().subscribeMsg(new String[]{topicSelf}, new int[]{2});
+    override fun connectComplete(
+        reconnect: Boolean,
+        serverURI: String
+    ) {
+        val topicSelf = "msg/chat/$idSelf"
+        MqttManager.getInstance().subscribeMsg(arrayOf(topicSelf), intArrayOf(2))
     }
 
-    @Override
-    public void connectionLost(Throwable cause) {
-
-    }
-
-    @Override
-    public void messageArrived(String topic, MqttMessage message) {
-        final String jsonMessage = new String(message.getPayload());
-        final ImEntity imEntity = new Gson().fromJson(jsonMessage, ImEntity.class);
-        for (ImMessageListener imMessageListener : messageListeners) {
-            imMessageListener.onMessageReceived(imEntity);
+    override fun connectionLost(cause: Throwable) {}
+    override fun messageArrived(topic: String, message: MqttMessage) {
+        val jsonMessage = String(message.payload)
+        val imEntity = Gson().fromJson(jsonMessage, ImEntity::class.java)
+        for (imMessageListener in messageListeners) {
+            imMessageListener.onMessageReceived(imEntity)
         }
     }
 
-    @Override
-    public void deliveryComplete(IMqttDeliveryToken token) {
-
-    }
+    override fun deliveryComplete(token: IMqttDeliveryToken) {}
 }

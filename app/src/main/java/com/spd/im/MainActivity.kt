@@ -2,6 +2,7 @@ package com.spd.im
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.rxLifeScope
 import com.google.gson.Gson
 import com.spd.im.core.ImClient
 import com.spd.im.core.entity.ImEntity
@@ -28,7 +29,11 @@ class MainActivity : AppCompatActivity(), ImMessageListener {
             val content =
                 "{\"content\":\"测试内容\",\"fromId\":\"1\",\"fromName\":\"测试\",\"fromUrl\":\"\",\"imageUrlLarge\":\"\",\"imageUrlSmall\":\"\",\"msgId\":1,\"readState\":0,\"sendState\":1,\"tag\":\"1\",\"time\":1589449497724,\"toId\":\"123456\",\"toName\":\"123456\",\"toUrl\":\"\",\"typeChat\":1,\"typeFile\":1,\"voiceTime\":0,\"voiceUrl\":\"\"}";
             val imEntity: ImEntity = Gson().fromJson(content, ImEntity::class.java)
-            ImClient.getInstance().chatManager.sendText(imEntity)
+            rxLifeScope.launch {
+                val result = ImClient.getInstance().chatManager.sendText(imEntity)
+                log.text = result.toString()
+            }
+
         }
     }
 

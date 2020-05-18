@@ -11,11 +11,8 @@ import rxhttp.wrapper.param.toResponse
  * 联系方式:QQ:282921012
  * 功能描述:
  */
-fun ImEntity.sendText(){
-    val message = this.toString()
-    GlobalScope.launch {
-        RxHttp.postJson("http://bj.speedata.cn:9004/monitor/api/msg/text").addAll(message)
-            .toResponse<ImEntity>().await()
-    }
-
+suspend fun ImEntity.sendText(): ImEntity {
+    return RxHttp.postJson("http://bj.speedata.cn:9004/monitor/api/msg/text")
+        .addAll(this.toString())
+        .toResponse<ImEntity>().await()
 }
