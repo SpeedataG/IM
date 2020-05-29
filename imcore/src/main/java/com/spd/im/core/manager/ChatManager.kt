@@ -1,8 +1,6 @@
 package com.spd.im.core.manager
 
 import com.spd.im.core.entity.ImEntity
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
 
@@ -13,6 +11,5 @@ import rxhttp.wrapper.param.toResponse
  */
 suspend fun ImEntity.sendText(): ImEntity {
     return RxHttp.postJson("http://bj.speedata.cn:9004/monitor/api/msg/text")
-        .addAll(this.toString())
-        .toResponse<ImEntity>().await()
+        .addAll(this.toString()).toResponse<ImEntity>().await()
 }

@@ -30,7 +30,7 @@ object Version {
 }
 
 object DependenciesExt {
-    const val buildGradle = "com.android.tools.build:gradle:4.1.0-alpha09"
+    const val buildGradle = "com.android.tools.build:gradle:4.0.0"
     const val kotlinGradlePlugin =
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlinVersion}"
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.kotlinVersion}"
@@ -164,8 +164,9 @@ object DependenciesExt {
     val andServer = arrayOf(andServerApi, andServerAnnotation)
     const val pickerView = "com.contrarywind:Android-PickerView:4.1.6"
     // https://github.com/liujingxing/okhttp-RxHttp
-    private const val rxHttpCore = "com.ljx.rxhttp:rxhttp:2.2.1"
+    private const val rxHttpCore = "com.ljx.rxhttp:rxhttp:2.2.4"
     private const val rxHttpLife = "com.ljx.rxlife:rxlife-coroutine:2.0.0"
-    const val rxHttpCompiler = "com.ljx.rxhttp:rxhttp-compiler:2.2.1"
-    val rxHttp = arrayOf(rxHttpCore, rxHttpLife)
+    private const val okHttp = "com.squareup.okhttp3:okhttp:4.7.2"
+    const val rxHttpCompiler = "com.ljx.rxhttp:rxhttp-compiler:2.2.4"
+    val rxHttp = arrayOf(rxHttpCore, rxHttpLife,okHttp)
 }

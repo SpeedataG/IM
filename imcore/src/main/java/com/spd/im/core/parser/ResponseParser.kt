@@ -8,7 +8,7 @@ import rxhttp.wrapper.parse.AbstractParser
 import java.io.IOException
 import java.lang.reflect.Type
 
-@Parser(name = "Response")
+@Parser(name = "Response", wrappers = [MutableList::class])
 open class ResponseParser<T> : AbstractParser<T> {
     protected constructor() : super()
 
@@ -16,14 +16,14 @@ open class ResponseParser<T> : AbstractParser<T> {
 
     @Throws(IOException::class)
     override fun onParse(response: okhttp3.Response): T {
-        val type: Type = ParameterizedTypeImpl[Response::class.java, mType] //获取泛型类型
+        val type: Type = ParameterizedTypeImpl[Response::class.java, mType]
         val data: Response<T> = convert(response, type)
         var t = data.data //获取data字段
         if (t == null && mType === String::class.java) {
             @Suppress("UNCHECKED_CAST")
             t = data.msg as T
         }
-        if (data.code != 0 || t == null) { //code不等于0，说明数据不正确，抛出异常
+        if (data.code != 0 || t == null) {
             throw ParseException(data.code.toString(), data.msg, response)
         }
         return t
