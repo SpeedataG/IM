@@ -38,5 +38,5 @@ dependencies {
     api(DependenciesExt.localBroadcastManager)
     api(DependenciesExt.rxHttp)
     kapt(DependenciesExt.rxHttpCompiler)
-
+    compileOnly 'com.hyphenate:hyphenate-sdk:3.6.1'
 }

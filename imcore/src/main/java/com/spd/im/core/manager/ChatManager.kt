@@ -1,6 +1,8 @@
 package com.spd.im.core.manager
 
+import com.spd.im.core.ImClient
 import com.spd.im.core.entity.ImEntity
+import com.spd.im.core.net.ImUrls
 import rxhttp.wrapper.param.RxHttp
 import rxhttp.wrapper.param.toResponse
 
@@ -10,6 +12,6 @@ import rxhttp.wrapper.param.toResponse
  * 功能描述:
  */
 suspend fun ImEntity.sendText(): ImEntity {
-    return RxHttp.postJson("http://bj.speedata.cn:9004/monitor/api/msg/text")
-        .addAll(this.toString()).toResponse<ImEntity>().await()
+    val sendUrl = ImUrls.DEFAULT_PREFIX + ImClient.getInstance().imOptions.host + ImClient.getInstance().imOptions.port + ImUrls.SEND_MSG
+    return RxHttp.postJson(sendUrl).addAll(this.toString()).toResponse<ImEntity>().await()
 }
