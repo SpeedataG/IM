@@ -1,19 +1,24 @@
 package com.spd.im
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.rxLifeScope
 import com.google.gson.Gson
 import com.spd.im.core.ImClient
 import com.spd.im.core.entity.ImEntity
+import com.spd.im.core.entity.ImUserEntity
 import com.spd.im.core.listener.ILoginCallback
 import com.spd.im.core.listener.ImMessageListener
+import com.spd.im.core.manager.update
 import kotlinx.android.synthetic.main.activity_main.*
+import rxhttp.wrapper.param.RxHttp
 
 class MainActivity : AppCompatActivity(), ImMessageListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        RxHttp.setDebug(true)
         ImClient.getInstance().init(this)
         ImClient.getInstance().login("123456", "", object : ILoginCallback {
             override fun onSuccess() {
@@ -31,9 +36,11 @@ class MainActivity : AppCompatActivity(), ImMessageListener {
             val imEntity: ImEntity = Gson().fromJson(content, ImEntity::class.java)
             rxLifeScope.launch {
                 val result = ImClient.getInstance().chatManager.sendText(imEntity)
-                log.text = result.toString()
+                Log.i("Reginer", "send response is::$result")
             }
 
+            val imUserEntity = ImUserEntity("10313", "dlsund66", "/sdcard/Pictures/avatar.png")
+            rxLifeScope.launch { val result = imUserEntity.update();Log.i("Reginer", "update response is::$result") }
         }
     }
 

@@ -9,5 +9,15 @@ object ImUrls {
     const val DEFAULT_HOST = "bj.speedata.cn"
     const val DEFAULT_PORT = 9004
     const val DEFAULT_PREFIX = "http://"
+    const val COLON = ":"
+
+    /**
+     * 发送消息
+     */
     const val SEND_MSG = "/monitor/api/msg/text"
+
+    /**
+     * 更新用户
+     */
+    const val USER_UPDATE = "/monitor/api/device/update"
 }

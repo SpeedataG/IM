@@ -53,6 +53,7 @@ class ImChatManager : MqttCallbackExtended {
         return imEntity.sendText()
     }
 
+
     override fun connectComplete(
         reconnect: Boolean,
         serverURI: String

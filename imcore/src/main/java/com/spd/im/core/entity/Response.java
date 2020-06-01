@@ -1,6 +1,14 @@
 package com.spd.im.core.entity;
 
 
+import androidx.annotation.Keep;
+
+/**
+ * @author :Reginer in  2020/6/1 14:44.
+ * 联系方式:QQ:282921012
+ * 功能描述:返回响应
+ */
+@Keep
 public class Response<T> {
 
     private int code;
