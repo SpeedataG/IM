@@ -12,7 +12,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Keep
 @Parcelize
-class ImUserEntity(var cardId: String, var userName: String, var img: String? = null) : Parcelable {
+open class ImUserEntity(var cardId: String = "", var userName: String = "", var img: String? = null) : Parcelable {
     override fun toString(): String {
         return Gson().toJson(this)
     }
