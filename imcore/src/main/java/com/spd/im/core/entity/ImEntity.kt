@@ -12,7 +12,7 @@ import kotlinx.android.parcel.Parcelize
  */
 @Keep
 @Parcelize
-data class ImEntity(
+open class ImEntity(
     /**
      * 消息id，由服务器生成，发送时为null，后台处理后变成消息主键，不重复
      */
