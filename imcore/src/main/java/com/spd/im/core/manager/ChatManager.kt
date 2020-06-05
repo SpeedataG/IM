@@ -35,7 +35,10 @@ suspend fun ImEntity.sendVoice(voicePath: String): ImEntity {
  */
 suspend fun ImUserEntity.update(): ImUserEntity {
     val requestUrl = ImUrls.DEFAULT_PREFIX + ImClient.getInstance().imOptions.host + ImUrls.COLON + ImClient.getInstance().imOptions.port + ImUrls.USER_UPDATE
-    val updateRequest = RxHttp.postForm(requestUrl).add("cardId", cardId).add("userName", userName)
+    val updateRequest = RxHttp.postForm(requestUrl).add("cardId", cardId)
+    if (TextUtils.isEmpty(userName).not()) {
+        updateRequest.add("userName", userName)
+    }
     if (TextUtils.isEmpty(img).not() && img?.startsWith("http") == false) {
         updateRequest.addFile("img", img)
     }

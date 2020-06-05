@@ -4,8 +4,8 @@
  *         功能描述:Mdm环境变量
  */
 object AppConfig {
-    const val versionName = "1.1"
-    const val versionCode = 2
+    const val versionName = "1.3"
+    const val versionCode = 3
     const val buildToolsVersion = "29.0.3"
     const val compileSdkVersion = 29
     const val targetSdkVersion = 29

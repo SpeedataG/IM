@@ -3,6 +3,7 @@ package com.spd.im.core.manager
 import android.content.Context
 import com.google.gson.Gson
 import com.spd.im.core.entity.ImEntity
+import com.spd.im.core.entity.ImUserEntity
 import com.spd.im.core.listener.ILoginCallback
 import com.spd.im.core.listener.ImMessageListener
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
@@ -55,6 +56,10 @@ class ImChatManager : MqttCallbackExtended {
 
     suspend fun sendVoice(imEntity: ImEntity, voicePath: String): ImEntity {
         return imEntity.sendVoice(voicePath)
+    }
+
+    suspend fun updateUser(imUserEntity: ImUserEntity): ImUserEntity {
+        return imUserEntity.update()
     }
 
 
