@@ -17,6 +17,11 @@ object ImUrls {
     const val SEND_MSG = "/monitor/api/msg/text"
 
     /**
+     * 发送语音
+     */
+    const val SEND_VOICE = "/monitor/api/msg/voice"
+
+    /**
      * 更新用户
      */
     const val USER_UPDATE = "/monitor/api/device/update"

@@ -53,6 +53,10 @@ class ImChatManager : MqttCallbackExtended {
         return imEntity.sendText()
     }
 
+    suspend fun sendVoice(imEntity: ImEntity, voicePath: String): ImEntity {
+        return imEntity.sendVoice(voicePath)
+    }
+
 
     override fun connectComplete(
         reconnect: Boolean,

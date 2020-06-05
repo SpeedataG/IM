@@ -51,6 +51,7 @@ class MainActivity : AppCompatActivity(), ImMessageListener {
     }
 
     override fun onMessageReceived(message: ImEntity) {
+        Log.i("Reginer","message is::$message")
         log.text = message.toString()
     }
 }

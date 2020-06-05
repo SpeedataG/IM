@@ -23,6 +23,14 @@ suspend fun ImEntity.sendText(): ImEntity {
 }
 
 /**
+ * 发送语音消息
+ */
+suspend fun ImEntity.sendVoice(voicePath: String): ImEntity {
+    val requestUrl = ImUrls.DEFAULT_PREFIX + ImClient.getInstance().imOptions.host + ImUrls.COLON + ImClient.getInstance().imOptions.port + ImUrls.SEND_VOICE
+    return RxHttp.postForm(requestUrl).add("entity", this.toString()).addFile("voice", voicePath).toResponse<ImEntity>().await()
+}
+
+/**
  * 更新用户信息
  */
 suspend fun ImUserEntity.update(): ImUserEntity {
