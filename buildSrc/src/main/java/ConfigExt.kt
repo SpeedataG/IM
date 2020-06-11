@@ -4,8 +4,8 @@
  *         功能描述:Mdm环境变量
  */
 object AppConfig {
-    const val versionName = "1.3"
-    const val versionCode = 3
+    const val versionName = "1.4"
+    const val versionCode = 4
     const val buildToolsVersion = "29.0.3"
     const val compileSdkVersion = 29
     const val targetSdkVersion = 29
@@ -164,9 +164,9 @@ object DependenciesExt {
     val andServer = arrayOf(andServerApi, andServerAnnotation)
     const val pickerView = "com.contrarywind:Android-PickerView:4.1.6"
     // https://github.com/liujingxing/okhttp-RxHttp
-    private const val rxHttpCore = "com.ljx.rxhttp:rxhttp:2.2.5"
+    private const val rxHttpCore = "com.ljx.rxhttp:rxhttp:2.2.7"
     private const val rxHttpLife = "com.ljx.rxlife:rxlife-coroutine:2.0.0"
     private const val okHttp = "com.squareup.okhttp3:okhttp:4.7.2"
-    const val rxHttpCompiler = "com.ljx.rxhttp:rxhttp-compiler:2.2.5"
+    const val rxHttpCompiler = "com.ljx.rxhttp:rxhttp-compiler:2.2.7"
     val rxHttp = arrayOf(rxHttpCore, rxHttpLife,okHttp)
 }

@@ -3,7 +3,6 @@ package com.spd.im.core;
 import android.content.Context;
 
 
-import com.hyphenate.chat.EMClient;
 import com.spd.im.core.entity.ImOptions;
 import com.spd.im.core.instance.ImSingleton;
 import com.spd.im.core.listener.ILoginCallback;
